@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Temperature Summary using API</title>
+</head>
+
+<body>
+
+    <main>
+        <div class="main_panel">
+            <form action="" onSubmit="return false">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="">Location</label>
+                                <input type="text" id="city" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col d-flex justify-content-center">
+                            <button type="submit" onClick="getWeather();">Get Weather</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="main">
+            <span id="main-data"></span>
+        </div>
+
+        <div class="details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 box">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="">Temperature</label>
+                                        <input type="text" id="temp" class="form-control" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="">Feels Like</label>
+                                        <input type="text" id="feelsLike" class="form-control" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="">Max Temperature</label>
+                                        <input type="text" id="maxTemp" class="form-control" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="">Min Temperature</label>
+                                        <input type="text" id="minTemp" class="form-control" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-12 box">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="">Weather</label>
+                                        <input type="text" id="weather" class="form-control" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="">Weather Description</label>
+                                        <input type="text" id="weatherDesc" class="form-control" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="">Pressure</label>
+                                        <input type="text" id="pressure" class="form-control" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="">Humidity</label>
+                                        <input type="text" id="humidity" class="form-control" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-12 box">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="">Visibilty</label>
+                                        <input type="text" id="visibility" class="form-control" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="">Wind Speed</label>
+                                        <input type="text" id="windSpeed" class="form-control" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="">Wind Direction</label>
+                                        <input type="text" id="windDirection" class="form-control" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="">Cloudiness</label>
+                                        <input type="text" id="cloud" class="form-control" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col watermark">
+                        Developed and Maintained by Nabeel Sohail
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col copyright">
+                        Copyright &copy; - All Rights Reserved
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col portfolio">
+                        <a href="https://nabeelsohail2630.wixsite.com/portfolio"
+                            target="_blank">nabeelsohail2630.wixsite.com/portfolio</a>
+                    </div>
+                </div>
+
+                <div class="row d-flex justify-content-center">
+                    <div class="col">
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col social">
+                        <ul class="media-icons">
+                            <li><a href="https://github.com/NabeelSohail-30" target="_blank"><img
+                                        src="Images/github.png" alt=""></a></li>
+                            <li><a href="https://www.linkedin.com/in/nabeel-sohail-a63508200/" target="_blank"><img
+                                        src="Images/linkedin.png" alt=""></a></li>
+                            <li><a href="https://wa.me/923453628868" target="_blank"><img src="Images/whatsapp.png"
+                                        alt=""></a>
+                            </li>
+                            <li><a href="mailto:nabeel.sohail2630@outlook.com"><img src="Images/email.png" alt=""></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="app.js" type="text/javascript" defer></script>
+    <script src="https://unpkg.com/axios@1.1.3/dist/axios.min.js" defer></script>
+</body>
+
+</html>
