@@ -1,38 +1,135 @@
 const url = window.location.href;
 let baseUrl = "";
 
-if (url.split(":")[0] === 'http') {
-    baseUrl = 'http://localhost:5001';
-} else {
+if (url.split(":")[0] === 'https') {
     baseUrl = 'https://ill-pink-gorilla-cuff.cyclic.app';
+} else {
+    baseUrl = 'http://localhost:5001';
 }
 
-let getWeather = () => {
+/*------------------------------------------------------------------------*/
 
-    //let cityName = document.querySelector("#cityName").value
+let addProduct = () => {
 
-    axios.get(`${baseUrl}/weather`)
+    let name = document.querySelector("#name").value
+    let price = document.querySelector("#price").value
+    let cat = document.querySelector("#cat").value
+    let desc = document.querySelector("#desc").value
+
+    axios.post(`${baseUrl}/product`, {
+        name: name,
+        price: price,
+        category: cat,
+        description: desc
+    })
         .then(function (response) {
             // handle success
             console.log("response is success");
             console.log(response.data);
 
-            document.querySelector("#main-data").innerHTML = `${response.data.city} ${response.data.temp}<sup>o</sup>C`;
-            document.querySelector("#weather").value = response.data.weather[0].main;
-            document.querySelector("#weatherDesc").value = response.data.weather[0].description;
-            document.querySelector("#temp").value = response.data.temp + 'C';
-            document.querySelector("#feelsLike").value = response.data.feels_like + 'C';
-            document.querySelector("#maxTemp").value = response.data.temp_max + 'C';
-            document.querySelector("#minTemp").value = response.data.temp_min + 'C';
-            document.querySelector("#pressure").value = response.data.pressure + '%';
-            document.querySelector("#humidity").value = response.data.humidity + '%';
-            document.querySelector("#visibility").value = response.data.visibility + '%';
-            document.querySelector("#windSpeed").value = response.data.windspeed + ' mph';
-            document.querySelector("#windDirection").value = response.data.winddeg + ' degree';
-            document.querySelector("#cloud").value = response.data.clouds + '%';
+            document.querySelector("#result").innerHTML =
+                response.data.message
+
+            getAllProducts();
+
         })
         .catch(function (error) {
             // handle error
             console.log(error);
+            document.querySelector("#result").innerHTML =
+                error.data.message
         })
+
+}
+
+/*------------------------------------------------------------------------*/
+
+let getAllProducts = () => {
+    axios.get(`${baseUrl}/products`)
+        .then(function (response) {
+            // handle success
+            console.log("response is success");
+            console.log(response.data.data);
+            document.querySelector("#productList").innerHTML = ""
+
+            response?.data?.data.map((eachProduct, index) => {
+                document.querySelector("#productList").innerHTML +=
+                    `
+                    <div>
+                        <h1>${eachProduct.name} </h1>
+                        <p>${eachProduct.price} </p>
+                        <p>${eachProduct.category} </p>
+                        <p>${eachProduct.description} </p>
+                        <button onclick="deleteProduct('${eachProduct._id}')">delete </button>
+                        <button onclick="editProduct('${eachProduct._id}')">Edit </button>
+                        <button onclick="updateProduct('${eachProduct._id}')">Update </button>
+                    </div>
+                    `
+            })
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+            document.querySelector("#result").innerHTML =
+                error.data.message
+        })
+}
+
+/*------------------------------------------------------------------------*/
+
+let deleteProduct = (id) => {
+
+    axios.delete(`${baseUrl}/product/${id}`)
+        .then(function (response) {
+            // handle success
+            console.log("response is success");
+            console.log(response.data);
+
+            document.querySelector("#result").innerHTML =
+                response.data.message
+
+            getAllProducts();
+
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+            document.querySelector("#result").innerHTML =
+                error.data.message
+        })
+}
+
+/*------------------------------------------------------------------------*/
+
+let updateProduct = (id) => {
+
+    let name = document.querySelector("#nameUp").value
+    let price = document.querySelector("#priceUp").value
+    let cat = document.querySelector("#catUp").value
+    let desc = document.querySelector("#descUp").value
+
+    axios.put(`${baseUrl}/product/${id}`, {
+        name: name,
+        price: price,
+        category: cat,
+        description: desc
+    })
+        .then(function (response) {
+            // handle success
+            console.log("response is success");
+            console.log(response.data);
+
+            document.querySelector("#result").innerHTML =
+                response.data.message
+
+            getAllProducts();
+
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+            document.querySelector("#result").innerHTML =
+                error.data.message
+        })
+
 }
