@@ -27,8 +27,7 @@ let addProduct = () => {
             console.log("response is success");
             console.log(response.data);
 
-            document.querySelector("#result").innerHTML =
-                response.data.message
+            alert(response.data.message);
 
             getAllProducts();
 
@@ -37,7 +36,7 @@ let addProduct = () => {
             // handle error
             console.log(error);
             document.querySelector("#result").innerHTML =
-                error.data.message
+                error.message
         })
 
 }
@@ -55,14 +54,17 @@ let getAllProducts = () => {
             response?.data?.data.map((eachProduct, index) => {
                 document.querySelector("#productList").innerHTML +=
                     `
-                    <div>
-                        <h1>${eachProduct.name} </h1>
-                        <p>${eachProduct.price} </p>
-                        <p>${eachProduct.category} </p>
-                        <p>${eachProduct.description} </p>
-                        <button onclick="deleteProduct('${eachProduct._id}')">delete </button>
-                        <button onclick="editProduct('${eachProduct._id}')">Edit </button>
-                        <button onclick="updateProduct('${eachProduct._id}')">Update </button>
+                    <div class='pr_card'>
+                        <div class='prName'>${eachProduct.name} </div>
+                        <div class='prPrice'>${eachProduct.price} </div>
+                        <div class='prCatg'>${eachProduct.category} </div>
+                        <div class='prDesc'>${eachProduct.description} </div>
+                        
+                        <div class='action'>
+                            <button class='btn' onclick="deleteProduct('${eachProduct._id}')">delete </button>
+                            <button class='btn' onclick="editProduct('${eachProduct._id}')">Edit </button>
+                            <button class='btn' onclick="updateProduct('${eachProduct._id}')">Update </button>
+                        </div>
                     </div>
                     `
             })
@@ -70,8 +72,7 @@ let getAllProducts = () => {
         .catch(function (error) {
             // handle error
             console.log(error);
-            document.querySelector("#result").innerHTML =
-                error.data.message
+            document.querySelector("#result").innerHTML = error.data.message
         })
 }
 
@@ -85,17 +86,14 @@ let deleteProduct = (id) => {
             console.log("response is success");
             console.log(response.data);
 
-            document.querySelector("#result").innerHTML =
-                response.data.message
-
+            document.querySelector("#result").innerHTML = response.data.message
             getAllProducts();
 
         })
         .catch(function (error) {
             // handle error
             console.log(error);
-            document.querySelector("#result").innerHTML =
-                error.data.message
+            document.querySelector("#result").innerHTML = error.data.message
         })
 }
 

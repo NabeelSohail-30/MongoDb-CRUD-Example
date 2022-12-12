@@ -1,3 +1,12 @@
+/*------------------------Initial---------------------*/
+:root {
+    --dark: #56666B;
+    --darker: #2F394D;
+    --white: #ffffff;
+    --light: #E0EEC6;
+    --black: #000000;
+}
+
 * {
     margin: 0px;
     padding: 0px;
@@ -6,69 +15,105 @@
 }
 
 body {
-    background-image: url("Images/base.jpg");
-    background-position: center;
-    background-repeat: repeat;
-    background-size: cover;
-    color: #393E41;
+    background-color: var(--light);
+    color: var(--black);
     font-weight: 500;
     font-size: 18px;
 }
 
-main {
-    height: 100vh;
+/*------------------------header----------------------*/
+
+header {
+    background-color: var(--darker);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
-.main_panel {
-    background-color: #1C9CF6;
-    width: 30%;
+/*-------------------------Wrapper------------------*/
+
+.wrapper {
+    background-color: var(--dark);
+    width: 40%;
     margin: 40px auto;
-    padding: 20px;
+    padding: 30px;
+    border-radius: 6px;
 }
 
-.box {
-    padding: 20px;
-    background-color: #1D71F2;
-    color: white;
+.wrapper .container {
+    width: 90%;
+    margin: auto;
+    padding-top: 0px;
 }
 
-.main {
-    background-color: #1c9bf6a3;
-    color: white;
-    font-size: 58px;
+.wrapper .container .head {
+    text-align: center;
+    font-size: 34px;
     font-weight: bold;
+    background-color: var(--darker);
+    color: var(--light);
     width: fit-content;
-    padding: 18px;
-    margin: 40px auto;
-    display: none;
+    margin: auto;
+    padding: 10px 40px;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
-.box .row {
-    padding: 10px;
+.wrapper .container .row {
+    margin-top: 16px;
 }
 
-button {
-    padding: 6px 14px;
-    background-color: #1D71F2;
-    color: #E7E5DF;
-    margin: 8px;
-    width: fit-content;
-    border: none;
-    font-size: 18px;
+.btn-add {
+    background-color: var(--light);
+    color: var(--darker);
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-weight: bold;
+    border-radius: 20px;
+    border: 3px solid var(--darker);
 }
 
-button:hover {
-    padding: 6px 14px;
-    background-color: #E7E5DF;
-    color: #1D71F2;
-    margin: 8px;
-    width: fit-content;
-    font-size: 18px;
+.btn-add:hover {
+    background-color: var(--darker);
+    color: var(--light);
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-weight: bold;
+    border-radius: 20px;
+    border: 3px solid var(--white);
 }
+
+
+/*-----------------------Section/Product List-----------------------------*/
+
+section {
+    background-color: var(--dark);
+}
+
+.productList {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    overflow: auto;
+    flex-basis: auto;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 20px;
+}
+
+.pr_card {
+    border: 2px solid var(--darker);
+    padding: 20px;
+    margin: 20px;
+}
+
+/*------------------------footer---------------------*/
 
 footer {
-    background-color: #0f4ca7;
-    color: #E7E5DF;
+    background-color: var(--darker);
+    color: var(--light);
     display: flex;
     justify-content: center;
     height: fit-content;
@@ -90,26 +135,26 @@ footer {
     font-size: 14px;
     text-align: center;
     font-weight: 400;
-    margin-top: 20px;
+    margin-top: 14px;
 }
 
 .portfolio a {
     font-size: 14px;
     text-align: center;
     font-weight: 400;
-    margin-top: 20px;
+    margin-top: 14px;
     text-decoration: none;
-    color: #E7E5DF;
+    color: var(--light);
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 }
 
 .media-icons {
     list-style-type: none;
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 14px;
 }
 
 .media-icons li {
@@ -124,32 +169,13 @@ footer {
 hr {
     width: 100vh;
     margin: auto;
+    background-color: var(--light);
 }
+
+/*-----------------------Responsive-------------------*/
 
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-    .main_panel {
-        width: 90%;
-    }
-
-    .details .container {
-        width: 90%;
-    }
-
-    .box {
-        padding: 5px;
-    }
-
-    .box .row {
-        padding: 5px;
-    }
-
-    .main {
-        font-size: 24px;
-        width: 90%;
-    }
-
-}
+@media only screen and (max-width: 600px) {}
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {}
