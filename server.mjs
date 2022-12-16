@@ -195,8 +195,8 @@ app.delete('/product/:id', (req, res) => {
 /*--------------------------------------------------------------*/
 
 const __dirname = path.resolve();
-app.get('/', express.static(path.join(__dirname, "/web")));
-app.use('/', express.static(path.join(__dirname, "/web")));
+app.get('/', express.static(path.join(__dirname, "/Web/index.html")));
+app.use('/', express.static(path.join(__dirname, "/Web")));
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
