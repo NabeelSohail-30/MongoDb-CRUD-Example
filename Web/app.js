@@ -10,12 +10,11 @@ if (url.split(":")[0] === 'https') {
 /*------------------------------------------------------------------------*/
 
 let cancel = () => {
-    let id = document.querySelector('#productId').value;
-    console.log(id);
-    document.querySelector("#name").value
-        = document.querySelector("#price").value
-    document.querySelector("#cat").value
-    document.querySelector("#desc").value
+    document.querySelector('#productId').value = null;
+    document.querySelector("#name").value = null;
+    document.querySelector("#price").value = null;
+    document.querySelector("#cat").value = null;
+    document.querySelector("#desc").value = null;
     getAllProducts();
 }
 
