@@ -139,7 +139,7 @@ app.put('/product/:id', async (req, res) => {
         console.log('updated: ', data);
 
         res.send({
-            message: "todo is updated successfully",
+            message: "Product is updated successfully",
             data: data
         })
 

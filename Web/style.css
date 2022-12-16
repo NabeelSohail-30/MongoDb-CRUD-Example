@@ -65,7 +65,19 @@ header {
     margin-top: 16px;
 }
 
-.btn-add {
+.wrapper label {
+    color: var(--light);
+    font-weight: bold;
+}
+
+.wrapper input {
+    color: var(--darker);
+    font-weight: 600;
+}
+
+.btn-add,
+.btn-update,
+.btn-cancel {
     background-color: var(--light);
     color: var(--darker);
     padding: 10px 20px;
@@ -75,7 +87,9 @@ header {
     border: 3px solid var(--darker);
 }
 
-.btn-add:hover {
+.btn-add:hover,
+.btn-update:hover,
+.btn-cancel:hover {
     background-color: var(--darker);
     color: var(--light);
     padding: 10px 20px;
@@ -104,9 +118,57 @@ section {
 }
 
 .pr_card {
-    border: 2px solid var(--darker);
+    border: 4px solid var(--darker);
     padding: 20px;
     margin: 20px;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    width: 340px;
+    border-radius: 4px;
+}
+
+.action {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+}
+
+.btn-edit,
+.btn-del {
+    background-color: var(--dark);
+    padding: 4px 16px;
+    margin: auto 10px;
+    border: 3px solid var(--darker);
+    border-radius: 14px;
+    color: var(--light);
+    font-weight: 500;
+}
+
+.btn-edit:hover,
+.btn-del:hover {
+    background-color: var(--light);
+    padding: 4px 16px;
+    margin: auto 10px;
+    border: 3px solid var(--darker);
+    border-radius: 14px;
+    color: var(--darker);
+    font-weight: 500;
+}
+
+.btn-update {
+    display: none;
+}
+
+.prName {
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 16px;
+    background-color: var(--darker);
+    color: var(--light);
+    padding: 4px 10px;
+    border-radius: 4px;
 }
 
 /*------------------------footer---------------------*/
