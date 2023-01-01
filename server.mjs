@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import cors from 'cors';
 import mongoose from 'mongoose';
 
 /*------------------------Schema-------------------------------*/
@@ -17,6 +18,7 @@ const productModel = mongoose.model('products', productSchema);
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 const port = process.env.PORT || 5001;
 
 /*---------------------APIs--------------------------*/
@@ -64,18 +66,20 @@ app.post("/product", (req, res) => {
 
 app.get('/products', (req, res) => {
 
-    productModel.find({}, (err, data) => {
-        if (!err) {
-            res.send({
-                message: "here is you todo list",
-                data: data
-            })
-        } else {
-            res.status(500).send({
-                message: "server error"
-            })
-        }
-    });
+    productModel.find({})
+        .sort({ _id: -1 })
+        .exec((err, data) => {
+            if (!err) {
+                res.send({
+                    message: "here is you todo list",
+                    data: data
+                })
+            } else {
+                res.status(500).send({
+                    message: "server error"
+                })
+            }
+        });
 })
 
 app.get('/product/:id', (req, res) => {
